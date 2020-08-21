@@ -18,7 +18,7 @@
       <div class="card" *ngFor="let person of people; trackBy: trackByFn">
         <mat-card>
           <div *ngIf="!person.editing" [@fade] class="data-view">
-            <div class="edit-icon"><button mat-mini-fab color="secondary" (click)="onToggleEdit(person)"><mat-icon>edit</mat-icon></button></div>
+            <div class="edit-icon"><button mat-mini-fab color="primary" (click)="onToggleEdit(person)"><mat-icon>edit</mat-icon></button></div>
             <mat-card-header>
               <mat-card-title>{{person?.firstName}} {{person?.lastName}}</mat-card-title>
               <mat-card-subtitle>title: {{person?.title}} </mat-card-subtitle>
@@ -77,7 +77,7 @@
               </div>
             </mat-card-content>
             <div class="expand-collapse">
-              <button mat-mini-fab color="primary" (click)="onToggleExpanded(person)">
+              <button mat-mini-fab color="secondary" (click)="onToggleExpanded(person)">
                 <mat-icon *ngIf="!person.expanded">expand_more</mat-icon>
                 <mat-icon *ngIf="person.expanded">expand_less</mat-icon>
               </button>
