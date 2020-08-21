@@ -36,6 +36,7 @@ export class PeopleGetInterceptor implements HttpInterceptor {
       }));
     } else if (request.url.match(/create/)) {
       const body = request.body as { person: ExpandablePerson; };
+      body.person.guid = 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[x]/g, (c) => Math.ceil(Math.random() * 9).toString());
       this.json.push(body.person);
 
       return of(new HttpResponse({
