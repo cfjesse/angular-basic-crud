@@ -1,0 +1,54 @@
+.master-details {
+
+ .toolbar-items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .data-view {
+    position: relative;
+
+    .edit-icon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+  }
+
+
+  .cards-container {
+
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr 1fr;
+    gap: 16px;
+
+    .edit-icon {
+      text-align: right;
+    }
+
+    ::ng-deep mat-card .card-header {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid orange;
+    }
+
+    .card-table {
+      margin: 16px;
+
+      table > tr > td {
+        padding-bottom: 8px;
+      }
+    }
+
+    .expand-collapse {
+      text-align: center;
+    }
+  }
+
+  .label {
+    vertical-align: top;
+    padding-right: 8px;
+  }
+}

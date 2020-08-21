@@ -1,0 +1,114 @@
+<div class="inline-form" (ngSubmit)="$event.preventDefault()">
+  <form #form="ngForm">
+    <div class="flex-container">
+      <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            first name
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.firstName" name="firstName" required>
+        </mat-form-field>
+      </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            last name
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.lastName" name="lastName" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            age
+          </mat-label>
+          <input type="number" matInput [(ngModel)]="person.age" name="age" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            title
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.title" name="title" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            other
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.other" name="other">
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            company
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.company" name="company" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            address
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.address" name="address" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            address2
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.address2" name="address2">
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            city
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.city" name="city" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            state
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.state" name="state" required>
+        </mat-form-field>
+       </div>
+       <div class="row">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            zip code
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.zipCode" name="zipCode" required>
+        </mat-form-field>
+       </div>
+       <div class="phone-number">
+         <ng-container *ngFor="let phone of person.phone; trackBy: trackByFn; let index = index; let first = first">
+           <div class="row">
+             <mat-form-field appearance="legacy">
+               <mat-label>
+                 phone number
+               </mat-label>
+               <input type="text" matInput [(ngModel)]="person.phone[index]" [name]="'phoneNumber'+index" [required]="first ? true: null">
+               <span class="remove-icon" *ngIf="!first" matSuffix (click)="onRemovePhone(index)"><mat-icon >delete</mat-icon></span>
+             </mat-form-field>
+            </div>
+         </ng-container>
+         <button *ngIf="person?.phone?.length < phoneNumberLimit" mat-raised-button color="secondary" (click)="onAddPhone()" [@fade]>
+           <mat-icon>add</mat-icon> new number
+         </button>
+       </div>
+    </div>
+  </form>
+  <div class="form-actions">
+    <button mat-raised-button color="primary" [disabled]="!form.valid || form.pristine" (click)="onSubmitForm()">Save</button>
+    <button *ngIf="action === 'save'" mat-raised-button color="secondary" (click)="onCancelEdit(person)">Cancel</button>
+  </div>
+</div>

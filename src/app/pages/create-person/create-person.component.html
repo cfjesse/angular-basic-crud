@@ -1,0 +1,20 @@
+<div class="create-person">
+
+  <mat-toolbar>
+    <div class="toolbar-items">
+      <span>
+        Create Person Page
+      </span>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="onCancelCreate()">
+          <mat-icon>delete</mat-icon> Cancel
+        </button>
+      </div>
+    </div>
+
+  </mat-toolbar>
+
+  <div class="create-container">
+    <app-inline-form [person]="person" action="create"></app-inline-form>
+  </div>
+</div>

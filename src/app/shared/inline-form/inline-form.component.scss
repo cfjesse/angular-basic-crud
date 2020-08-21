@@ -1,0 +1,19 @@
+.inline-form {
+  .flex-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  form {
+    .remove-icon {
+      cursor: pointer;
+    }
+  }
+
+  .form-actions {
+    button:first-child {
+      margin-right: 16px;
+    }
+  }
+}

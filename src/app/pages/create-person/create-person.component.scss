@@ -1,0 +1,12 @@
+.create-person {
+
+  .toolbar-items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  app-inline-form ::ng-deep .inline-form {
+    width: max-content;
+  }
+}
