@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PeopleService } from '../services/form-state.service';
-import { ModalService } from '../services/modal.service';
 import { CreatePersonComponent } from '../pages/create-person/create-person.component';
 
 @Injectable({
@@ -10,7 +9,7 @@ import { CreatePersonComponent } from '../pages/create-person/create-person.comp
 })
 export class CreatingPersonGuard implements CanDeactivate<CreatePersonComponent> {
 
-  constructor(private peopleService: PeopleService, private modalService: ModalService) { }
+  constructor(private peopleService: PeopleService) { }
 
   canDeactivate(
     component: unknown,

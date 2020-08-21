@@ -13,8 +13,6 @@ import { InlineFormComponent } from './shared/inline-form/inline-form.component'
 import { FormsModule } from '@angular/forms';
 import { PeopleService } from './services/form-state.service';
 import { CreatePersonComponent } from './pages/create-person/create-person.component';
-import { CancelWarningComponent } from './modals/cancel-warning/cancel-warning.component';
-import { ModalService } from './services/modal.service';
 
 @NgModule({
   declarations: [
@@ -34,12 +32,8 @@ import { ModalService } from './services/modal.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: PeopleGetInterceptor, multi: true },
-    PeopleService,
-    ModalService
+    PeopleService
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    CancelWarningComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
