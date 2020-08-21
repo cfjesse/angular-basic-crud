@@ -66,6 +66,7 @@ export class PeopleService {
   createPerson(person: ExpandablePerson): void {
 
     this.http.post<ExpandablePerson[]>('/create', { person }).subscribe(people => {
+      console.log(`*************** create person post`, people);
       this.people = people;
       this.peopleSubject.next(this.people);
       this.isCreatingPerson = false;

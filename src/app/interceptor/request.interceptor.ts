@@ -35,9 +35,9 @@ export class PeopleGetInterceptor implements HttpInterceptor {
         body: this.json
       }));
     } else if (request.url.match(/create/)) {
-
       const body = request.body as { person: ExpandablePerson; };
       this.json.push(body.person);
+      console.log(`************* interceptor`, body);
 
       return of(new HttpResponse({
         status: 200,

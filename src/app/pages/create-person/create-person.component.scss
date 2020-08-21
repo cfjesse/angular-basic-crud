@@ -1,9 +1,22 @@
 .create-person {
-
-  .toolbar-items {
+  mat-toolbar:nt-child(1) {
+    margin: 16px 0;
+  }
+  .toolbar-items, .warning-notification {
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    .actions {
+      button {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .create-container {
+    display: flex;
+    justify-content: center;
   }
 
   app-inline-form ::ng-deep .inline-form {

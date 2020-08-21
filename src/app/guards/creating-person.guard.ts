@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanDeactivate } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PeopleService } from '../services/form-state.service';
 import { ModalService } from '../services/modal.service';
@@ -18,13 +18,7 @@ export class CreatingPersonGuard implements CanDeactivate<CreatePersonComponent>
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if (this.peopleService.isCreatingPerson) {
-        console.log(`**************** creating person`);
-        return this.modalService.openWarningModal();
-
-      } else {
-        return true;
-      }
+      return !this.peopleService.isCreatingPerson;
   }
 
 }

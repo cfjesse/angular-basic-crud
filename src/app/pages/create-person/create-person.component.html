@@ -11,7 +11,17 @@
         </button>
       </div>
     </div>
+  </mat-toolbar>
+  <mat-toolbar class="warning" color="warn" *ngIf="showDataLossWarning" [@fade]>
+    <div class="warning-notification">
 
+      <span>You have unsaved data, if you leave it will be lost</span>
+
+      <div class="actions">
+        <button mat-raised-button (click)="onContinue(true)">Yes</button>
+        <button mat-raised-button (click)="onContinue(false)">No</button>
+      </div>
+    </div>
   </mat-toolbar>
 
   <div class="create-container">

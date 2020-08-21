@@ -4,6 +4,8 @@ import { PeopleService } from 'src/app/services/form-state.service';
 import { Fade } from 'src/app/animations/animations';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inline-form',
@@ -19,13 +21,15 @@ export class InlineFormComponent implements AfterViewInit, OnDestroy {
   formSubscription: Subscription;
   phoneNumberLimit = 3;
 
-  constructor(private peopleService: PeopleService) { }
+  constructor(private peopleService: PeopleService, private router: Router) { }
 
 
   ngAfterViewInit(): void {
     if (this.action === 'create') {
-      this.formSubscription = this.form.valueChanges.subscribe(() => {
-        this.peopleService.setCreatingPerson(true);
+      this.formSubscription = this.form.valueChanges.pipe(debounceTime(500)).subscribe(() => {
+        if (this.form.dirty) {
+          this.peopleService.setCreatingPerson(true);
+        }
       });
     }
   }
@@ -35,6 +39,7 @@ export class InlineFormComponent implements AfterViewInit, OnDestroy {
       this.peopleService.updatePerson(this.person);
     } else if (this.action === 'create') {
       this.peopleService.createPerson(this.person);
+      this.router.navigateByUrl('');
     }
   }
 

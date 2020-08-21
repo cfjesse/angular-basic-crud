@@ -89,6 +89,14 @@
           <input type="text" matInput [(ngModel)]="person.zipCode" name="zipCode" required>
         </mat-form-field>
        </div>
+       <div class="email">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            email
+          </mat-label>
+          <input type="text" matInput [(ngModel)]="person.email" name="zipCode" required>
+        </mat-form-field>
+       </div>
        <div class="phone-number">
          <ng-container *ngFor="let phone of person.phone; trackBy: trackByFn; let index = index; let first = first">
            <div class="row">
